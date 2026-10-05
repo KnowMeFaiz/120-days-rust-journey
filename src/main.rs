@@ -1,17 +1,25 @@
-fn main () {
-    let mut saldo_uang = 1000;
-    let harga_nft = 2000;
+struct Wallet {
+    nama: String,
+    balance: f64,
+}
 
-    println!("Saldo kamu saat ini: {}", saldo_uang);
-    println!("kamu mau beli nft seharga: {}", harga_nft);
+trait Describe {
+    fn describe(&self) -> String;
+}
 
-    if saldo_uang >= harga_nft {
-        println!("hore transaksi kamu berhasil beli nft ini");
+impl Describe for Wallet {
+    fn describe(&self) -> String {
+        format!("Wallet '{}' - balance: {:.2}", self.nama, self.balance)
+    }
+}
 
-        saldo_uang = saldo_uang - harga_nft;
-        println!("sisa saldo kamu sekarang: {}", saldo_uang);
-    }    else {
-            println!("transaksi kamu gagal, skill issue");
-        }
-    
+fn main() {
+    let aset: Vec<Box<dyn Describe>> = vec![Box::new(Wallet {
+        nama: String::from("Dompet gw"),
+        balance: 99.5,
+    })];
+
+    for item in &aset {
+        println!("{}", item.describe());
+    }
 }
