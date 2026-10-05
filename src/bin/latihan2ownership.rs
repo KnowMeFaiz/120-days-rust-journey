@@ -9,5 +9,3 @@ fn main () {
 
     println!("coba cek dompet A: {}", dompet_a);
 }
-
-//testing wakatime
