@@ -13,9 +13,10 @@ fn cek(status: &Status) -> String {
 }
 
 fn main() {
-
     let a = Status::Aktif;
-    let b = Status::Ditutup { alasan: String::from("rugpull") };
+    let b = Status::Ditutup {
+        alasan: String::from("rugpull"),
+    };
     let c = Status::Dibekukan;
 
     println!("{}", cek(&a));
